@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: prometheus-custom-collector-deployment
+  labels:
+    app: prometheus-custom-collector
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: prometheus-custom-collector
+  template:
+    metadata:
+      labels:
+        app: prometheus-custom-collector
+    spec:
+      containers:
+      - name: prometheus-custom-collector
+        image: kubejack/prometheus-custom-collector:0.2
+        ports:
+        - containerPort: 80

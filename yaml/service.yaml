@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: prometheus-custom-collector-service
+spec:
+  selector:
+    app: prometheus-custom-collector
+  type: NodePort
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8000
